@@ -62,7 +62,7 @@ static int cmd_info(char *args){
 			}
 		}
 	}
-	printf("%s:\t %x \t %d \n",args,result,result);
+	printf("%s:\t 0x%x \t %d \n",args,result,result);
 	return 0;
 }
 static int cmd_c(char *args) {
