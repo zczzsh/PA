@@ -27,6 +27,21 @@ char* rl_gets() {
 	return line_read;
 }
 
+static int cmd_c(char *args) {
+	cpu_exec(-1);
+	return 0;
+}
+
+static int cmd_q(char *args) {
+	return -1;
+}
+static int cmd_si(char *args){
+	int steps =1;
+	if(args != NULL)
+		steps =atoi(args);
+	cpu_exec(steps);
+	return 0;
+}
 
 static int cmd_info(char *args){
 	int result=0;
@@ -74,24 +89,9 @@ static int cmd_info(char *args){
 		}
 		printf("%s:\t 0x%x \t %d \n",args,result,result);
 	}
-
-	return 0;
-}
-static int cmd_c(char *args) {
-	cpu_exec(-1);
 	return 0;
 }
 
-static int cmd_q(char *args) {
-	return -1;
-}
-static int cmd_si(char *args){
-	int steps =1;
-	if(args != NULL)
-		steps =atoi(args);
-	cpu_exec(steps);
-	return 0;
-}
 static int cmd_help(char *args);
 
 static struct {
