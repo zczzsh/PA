@@ -27,6 +27,44 @@ char* rl_gets() {
 	return line_read;
 }
 
+
+static int cmd_info(char *args){
+	int result=0;
+	if (args[0]=='r'&& strlen(args)==1)
+	{
+		
+	}
+	else if(strlen(args)>1)
+	{
+        if(args[0]=='$')
+		{
+            char *arg = strtok(NULL,"$");
+            for(int i=0;i<8;i++)
+			{
+				if(strcmp(regsl[i],arg)==0)
+				{
+					result=reg_l(i);
+				}
+			}
+			for(int i=0;i<8;i++)
+			{
+				if(strcmp(regsw[i],arg)==0)
+				{
+					result=reg_w(i);
+				}
+			}
+			for(int i=0;i<8;i++)
+			{
+				if(strcmp(regsb[i],arg)==0)
+				{
+					result=reg_b(i);
+				}
+			}
+		}
+	}
+	printf("%s:\t %x \t %d \n",args,result,result);
+	return 0;
+}
 static int cmd_c(char *args) {
 	cpu_exec(-1);
 	return 0;
@@ -53,6 +91,7 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
 	{ "si", "fsjdkfls", cmd_si},
+	{ "info","output result",cmd_info}
 	/* TODO: Add more commands */
 
 };
