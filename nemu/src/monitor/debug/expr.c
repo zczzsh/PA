@@ -233,7 +233,7 @@ static bool check_parentheses(int start,int end)
 static bool is_op(int type)
 {
 	if(type==NUMBER || type==VARIABLE || type==OPENBAR ||type ==CLOSEBAR ||type== NOTYPE) return false;
-	else return true;
+	return true;
 }
 
 static int dominate_op(int start, int end)
