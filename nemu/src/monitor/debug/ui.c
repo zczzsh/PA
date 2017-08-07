@@ -95,7 +95,8 @@ int cmd_info(char *args){
 static int cmd_p(char *args)
 {
     bool success=true;
-	return expr(args,&success);
+	printf("%d",expr(args,&success));
+	return 0;
 }
 
 static int cmd_help(char *args);
