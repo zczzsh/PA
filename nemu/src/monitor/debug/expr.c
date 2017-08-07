@@ -106,36 +106,43 @@ static bool make_token(char *e) {
 						break;
 					case OR:
 					    tokens[nr_token].type=rules[i].token_type;
-						tokens[nr_token++].str[0]='7'; // youxianji
+						tokens[nr_token].str[0]='7'; // youxianji
+						nr_token++;
 						break;
 					case AND:
 					    tokens[nr_token].type=rules[i].token_type;
-						tokens[nr_token++].str[0]='6';
+						tokens[nr_token].str[0]='6';
+						nr_token++;
 						break;
 					case EQ:
 					case NQ:
 					    tokens[nr_token].type=rules[i].token_type;
-						tokens[nr_token++].str[0]='5';
+						tokens[nr_token].str[0]='5';
+						nr_token++;
 						break;
 					case PLUS:
 					case MINUS:
 						tokens[nr_token].type = rules[i].token_type;
-						tokens[nr_token++].str[0]='4';
+						tokens[nr_token].str[0]='4';
+						nr_token++;
 						break;
 					case POWER:
 					case DIVIDE:
 					    tokens[nr_token].type=rules[i].token_type;
-						tokens[nr_token++].str[0]='3';
+						tokens[nr_token].str[0]='3';
+						nr_token++;
 						break;
 					case NOT:
 					case DEREF:
 					case UNARYMINUS:
 					    tokens[nr_token].type=rules[i].token_type;
-						tokens[nr_token++].str[0]='2';
+						tokens[nr_token].str[0]='2';
+						nr_token++;
 						break;
 					case OPENBAR:
 					case CLOSEBAR:
-					    tokens[nr_token++].type=rules[i].token_type;
+					    tokens[nr_token].type=rules[i].token_type;
+						nr_token++;
 						break;
 					
 					default: panic("please implement me");
@@ -241,7 +248,7 @@ static int dominate_op(int start, int end)
 		}
 		if(is_op(tokens[i].type) && tokens[i].str[0]-'0'>m)
 		{
-			n++;
+			n=i;
 			m=tokens[i].str[0]-'0';
 		}
 	}
