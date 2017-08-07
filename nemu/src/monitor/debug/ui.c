@@ -43,24 +43,10 @@ static int cmd_si(char *args){
 	return 0;
 }
 
-int cmd_info(char *args){
+int cmd_info_one (char *args)
+{
 	int result=0;
-	if (args[0]=='r'&& strlen(args)==1)
-	{
-		for(int i=0;i<8;i++)
-		{
-			printf("%s:\t 0x%x \t %d \n",regsl[i],reg_l(i),reg_l(i));
-		}
-		for(int i=0;i<8;i++)
-		{
-			printf("%s:\t 0x%x \t %d \n",regsw[i],reg_w(i),reg_w(i));
-		}
-		for(int i=0;i<8;i++)
-		{
-			printf("%s:\t 0x%x \t %d \n",regsb[i],reg_b(i),reg_b(i));
-		}
-	}
-	else if(strlen(args)>1)
+	if(strlen(args)>1)
 	{
         if(args[0]=='$')
 		{
@@ -87,7 +73,30 @@ int cmd_info(char *args){
 				}
 			}
 		}
-		printf("%s:\t 0x%x \t %d \n",args,result,result);
+		//printf("%s:\t 0x%x \t %d \n",args,result,result);
+	}
+	return result;
+}
+
+int cmd_info(char *args){
+	if (args[0]=='r'&& strlen(args)==1)
+	{
+		for(int i=0;i<8;i++)
+		{
+			printf("%s:\t 0x%x \t %d \n",regsl[i],reg_l(i),reg_l(i));
+		}
+		for(int i=0;i<8;i++)
+		{
+			printf("%s:\t 0x%x \t %d \n",regsw[i],reg_w(i),reg_w(i));
+		}
+		for(int i=0;i<8;i++)
+		{
+			printf("%s:\t 0x%x \t %d \n",regsb[i],reg_b(i),reg_b(i));
+		}
+	}
+	else
+	{
+          printf("%s:\t 0x%x \t %d \n",args,cmd_info_one(args),cmd_info_one(args));
 	}
 	return 0;
 }
