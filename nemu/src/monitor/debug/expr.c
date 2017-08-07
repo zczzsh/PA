@@ -101,7 +101,7 @@ static bool make_token(char *e) {
 						{
 							tokens[nr_token].str[i]=substr_start[i];
 						}
-						tokens[nr_token].str[i]='\0';
+						tokens[nr_token].str[substr_len]='\0';
 						nr_token++;
 						break;
 					case OR:
