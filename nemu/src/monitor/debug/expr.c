@@ -97,8 +97,12 @@ static bool make_token(char *e) {
 					case NUMBER:
 					    if(substr_len>32)  assert(0);
 						tokens[nr_token].type = rules[i].token_type;
-						strcpy(tokens[nr_token].str,substr_start);
-						tokens[nr_token++].str[substr_len]='\0';
+						for(int i=0;i<substr_len;i++)
+						{
+							tokens[nr_token].str[i]=substr_start[i];
+						}
+						tokens[nr_token].str[i]='\0';
+						nr_token++;
 						break;
 					case OR:
 					    tokens[nr_token].type=rules[i].token_type;
