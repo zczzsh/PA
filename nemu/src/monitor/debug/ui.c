@@ -43,7 +43,7 @@ static int cmd_si(char *args){
 	return 0;
 }
 
-static int cmd_info(char *args){
+int cmd_info(char *args){
 	int result=0;
 	if (args[0]=='r'&& strlen(args)==1)
 	{
@@ -92,6 +92,12 @@ static int cmd_info(char *args){
 	return 0;
 }
 
+static int cmd_p(char *args)
+{
+    bool success=true;
+	return expr(args,&success);
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -103,7 +109,8 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
 	{ "si", "fsjdkfls", cmd_si},
-	{ "info","output result",cmd_info}
+	{ "info","output result",cmd_info},
+	{ "p","count result",cmd_p}
 	/* TODO: Add more commands */
 
 };
