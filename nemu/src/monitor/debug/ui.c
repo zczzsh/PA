@@ -96,7 +96,8 @@ int cmd_info(char *args){
 	}
 	else
 	{
-          printf("%s:\t 0x%x \t %d \n",args,cmd_info_one(args),cmd_info_one(args));
+		  int result=cmd_info_one(args);
+          printf("%s:\t 0x%x \t %d \n",args,result,result);
 	}
 	return 0;
 }
