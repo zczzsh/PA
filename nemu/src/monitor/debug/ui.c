@@ -8,6 +8,9 @@
 #include <readline/history.h>
 
 void cpu_exec(uint32_t);
+void set_wp(char *args);
+void free_wp(int N);
+void print_wp();
 
 /* We use the ``readline'' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
@@ -94,6 +97,10 @@ int cmd_info(char *args){
 			printf("%s:\t 0x%x \t %d \n",regsb[i],reg_b(i),reg_b(i));
 		}
 	}
+	else if(args[0]=='w'&& strlen(args)==1)
+	{
+		print_wp();
+	}
 	else
 	{
 		  int result=cmd_info_one(args);
@@ -113,6 +120,19 @@ static int cmd_x(char *args)
 	{
 		printf("0x%x\t",swaddr_read(result+i,1));
 	}
+	return 0;
+}
+
+static int cmd_w(char *args)
+{
+	set_wp(args);
+	return 0;
+}
+
+static int cmd_d(char *args)
+{
+	int number=atoi(args);
+	free_wp(number);
 	return 0;
 }
 
@@ -136,7 +156,9 @@ static struct {
 	{ "si", "fsjdkfls", cmd_si},
 	{ "info","output result",cmd_info},
 	{ "p","count result",cmd_p},
-	{ "x","scan",cmd_x}
+	{ "x","scan",cmd_x},
+	{ "w","set checkpoint",cmd_w},
+	{ "d","delete checkpoint",cmd_d}
 	/* TODO: Add more commands */
 
 };

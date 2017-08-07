@@ -8,6 +8,7 @@
  * You can modify this value as you want.
  */
 #define MAX_INSTR_TO_PRINT 10
+bool check_wp();
 
 int nemu_state = STOP;
 
@@ -74,7 +75,10 @@ void cpu_exec(volatile uint32_t n) {
 
 		/* TODO: check watchpoints here. */
 
-
+        if(check_wp()==true)
+		{
+			nemu_state = STOP;
+		}
 		if(nemu_state != RUNNING) { return; }
 
 #ifdef HAS_DEVICE
