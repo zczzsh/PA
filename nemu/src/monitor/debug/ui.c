@@ -102,6 +102,20 @@ int cmd_info(char *args){
 	return 0;
 }
 
+static int cmd_x(char *args)
+{
+    char *arg1=strtok(NULL," ");
+	char *arg2=strtok(NULL," ");
+	int number=atoi(arg1);
+	bool success=true;
+	uint32_t result= expr(arg2,&success);
+	for(int i=0;i<number;i++)
+	{
+		printf("0x%x\t",swaddr_read(result+i,1));
+	}
+	return 0;
+}
+
 static int cmd_p(char *args)
 {
     bool success=true;
@@ -121,7 +135,8 @@ static struct {
 	{ "q", "Exit NEMU", cmd_q },
 	{ "si", "fsjdkfls", cmd_si},
 	{ "info","output result",cmd_info},
-	{ "p","count result",cmd_p}
+	{ "p","count result",cmd_p},
+	{ "x","scan",cmd_x}
 	/* TODO: Add more commands */
 
 };
