@@ -260,7 +260,7 @@ static int str16to10(char *args)
 	int sum=0;
 	for(int i=2;i<strlen(args);i++)
 	{
-		if(args[i]>='0' && args[i]<=9)
+		if(args[i]>='0' && args[i]<='9')
 		sum=sum*16+(args[i]-'0');
 		if(args[i]>='a' && args[i]<='f')
 		sum=sum*16+(args[i]-'a'+10);
