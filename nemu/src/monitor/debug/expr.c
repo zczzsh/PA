@@ -278,7 +278,7 @@ static int eval(int start, int end)
 		{
             return cmd_info_one(tokens[start].str);
 		}
-		else if(tokens[start].str[0]=='0' && tokens[start].str[1]=='x')
+		else if(tokens[start].str[0]=='0' && tokens[start].str[1]=='x' &&strlen(tokens[start].str)>2)
 		{
 			return str16to10(tokens[start].str);
 		}
