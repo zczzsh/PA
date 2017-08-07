@@ -282,6 +282,7 @@ static int eval(int start, int end)
 		{
 			return str16to10(tokens[start].str);
 		}
+		printf("%s\n",tokens[start].str);
 		return atoi(tokens[start].str);
 	}
 
