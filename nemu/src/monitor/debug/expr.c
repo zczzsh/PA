@@ -237,7 +237,7 @@ static int dominate_op(int start, int end)
 		if(is_op(tokens[i].type) && tokens[i].str[0]-'0'>m)
 		{
 			n++;
-			m=tokens[i].str[0];
+			m=tokens[i].str[0]-'0';
 		}
 	}
 	return n;
