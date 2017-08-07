@@ -49,6 +49,7 @@ void free_wp(int N)
     WP* check=head;
 	WP* front=head;
 	if(check==NULL) return;
+	if(check==head) head=check->next;
 	if(check!=NULL && check->NO!=N)
 	{
 		front=check;
