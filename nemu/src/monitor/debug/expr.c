@@ -5,7 +5,7 @@
  */
 #include <sys/types.h>
 #include <regex.h>
-int cmd_info(char *args);
+int cmd_info_one(char *args);
 uint32_t swaddr_read(swaddr_t addr,size_t len);
 
 enum {
@@ -276,7 +276,7 @@ static int eval(int start, int end)
 	{
 		if(tokens[start].str[0]=='$')
 		{
-            return cmd_info(tokens[start].str);
+            return cmd_info_one(tokens[start].str);
 		}
 		else if(tokens[start].str[0]=='0' && tokens[start].str[1]=='x')
 		{
