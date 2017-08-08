@@ -335,9 +335,9 @@ uint32_t expr(char *e, bool *success) {
 	/* TODO: Insert codes to evaluate the expression. */
     for(int i=0;i<nr_token;i++)
 	{
-		if(tokens[i].type==POWER && (i==0 || is_op(tokens[i].type)))
+		if(tokens[i].type==POWER && (i==0 || is_op(tokens[i-1].type)))
 		   tokens[i].type=DEREF;
-		if(tokens[i].type==MINUS && (i==0 || is_op(tokens[i].type)))
+		if(tokens[i].type==MINUS && (i==0 || is_op(tokens[i-1].type)))
 		   tokens[i].type=UNARYMINUS;
 	}
 	//panic("please implement me");
