@@ -153,7 +153,7 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
-	{ "si", "fsjdkfls", cmd_si},
+	{ "si", "single step", cmd_si},
 	{ "info","output result",cmd_info},
 	{ "p","count result",cmd_p},
 	{ "x","scan",cmd_x},
